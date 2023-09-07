@@ -1,5 +1,4 @@
 import asyncio
-import json
 import random
 from dataclasses import asdict, dataclass, field
 from io import BytesIO
@@ -29,7 +28,7 @@ class ClickEvent:
         {
             "type": "record",
             "name": "click_event",
-            "namespace": "com.udacity.lesson3.exercise2",
+            "namespace": "com.sefidian.avro",
             "fields": [
                 {"name": "email", "type": "string"},
                 {"name": "timestamp", "type": "string"},
@@ -71,7 +70,7 @@ async def produce(topic_name):
 def main():
     """Checks for topic and creates the topic if it does not exist"""
     try:
-        asyncio.run(produce_consume("com.udacity.lesson3.solution2.clicks"))
+        asyncio.run(produce_consume("com.sefidian.avro.clicks"))
     except KeyboardInterrupt as e:
         print("shutting down")
 
@@ -84,4 +83,5 @@ async def produce_consume(topic_name):
 if __name__ == "__main__":
     main()
 
-# kafka-console-consumer --bootstrap-server localhost:9092 --topic "com.udacity.lesson3.solution2.clicks" --from-beginning
+# kafka-console-consumer --bootstrap-server localhost:29092 --topic "com.sefidian.avro" --from-beginning
+#  kafkacat -C -b localhost:29092 -o -5 -t com.sefidian.avro.clicks

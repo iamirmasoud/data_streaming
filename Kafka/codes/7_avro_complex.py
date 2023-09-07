@@ -39,7 +39,7 @@ class ClickEvent:
         {
             "type": "record",
             "name": "click_event",
-            "namespace": "com.udacity.lesson3.exercise2",
+            "namespace": "com.sefidian.avro",
             "fields": [
                 {"name": "email", "type": "string"},
                 {"name": "timestamp", "type": "string"},
@@ -81,7 +81,7 @@ async def produce(topic_name):
 def main():
     """Checks for topic and creates the topic if it does not exist"""
     try:
-        asyncio.run(produce_consume("com.udacity.lesson3.solution3.clicks"))
+        asyncio.run(produce_consume("com.sefidian.avro.clicks"))
     except KeyboardInterrupt as e:
         print("shutting down")
 

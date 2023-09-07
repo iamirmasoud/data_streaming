@@ -1,12 +1,11 @@
 import asyncio
-from dataclasses import dataclass, field
 import json
 import random
+from dataclasses import dataclass, field
 
 from confluent_kafka import Consumer, Producer
-from confluent_kafka.admin import AdminClient, NewTopic
+from confluent_kafka.admin import AdminClient
 from faker import Faker
-
 
 faker = Faker()
 
@@ -40,7 +39,7 @@ def main():
     client = AdminClient({"bootstrap.servers": BROKER_URL})
 
     try:
-        asyncio.run(produce_consume("com.udacity.lesson2.exercise6.purchases"))
+        asyncio.run(produce_consume("com.sefidian.purchases"))
     except KeyboardInterrupt as e:
         print("shutting down")
 

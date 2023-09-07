@@ -1,8 +1,7 @@
 import asyncio
 
-from confluent_kafka import Consumer, Producer, OFFSET_BEGINNING
+from confluent_kafka import OFFSET_BEGINNING, Consumer, Producer
 from confluent_kafka.admin import AdminClient
-
 
 BROKER_URL = "PLAINTEXT://localhost:29092"
 
