@@ -9,7 +9,7 @@ from faker import Faker
 
 faker = Faker()
 
-SCHEMA_REGISTRY_URL = "http://localhost:8081"
+SCHEMA_REGISTRY_URL = "http://localhost:8089"
 BROKER_URL = "PLAINTEXT://localhost:29092"
 
 

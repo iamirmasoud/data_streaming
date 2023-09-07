@@ -21,20 +21,22 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-  schema_registry:
+
+  schemaregistry:
     image: confluentinc/cp-schema-registry:latest
-    hostname: schema_registry
+    hostname: schemaregistry
     depends_on:
       - zookeeper
       - kafka
     ports:
-      - "8081:8081"
+      - "8089:8089"
     environment:
-      SCHEMA_REGISTRY_HOST_NAME: schema_registry
+      SCHEMA_REGISTRY_HOST_NAME: schemaregistry
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
-      SCHEMA_REGISTRY_LISTENERS: http://schema_registry:8081
+      SCHEMA_REGISTRY_LISTENERS: http://schemaregistry:8089
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092,PLAINTEXT_INTERNAL://localhost:29092
       SCHEMA_REGISTRY_DEBUG: 'true'
+
   connect:
     image: confluentinc/cp-kafka-connect:latest
     hostname: connect
@@ -42,7 +44,7 @@ services:
     depends_on:
       - zookeeper
       - kafka
-      - schema_registry
+      - schemaregistry
     ports:
       - "8083:8083"
     environment:
@@ -57,11 +59,14 @@ services:
       CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
       CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schema_registry:8081'
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schemaregistry:8089'
       CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schema_registry:8081'
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://schemaregistry:8089'
       CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_ZOOKEEPER_CONNECT: 'zookeeper:2181'
     volumes:
-      - ./kafka-connect:/etc/kafka-connect/jars        
+      - kafka_connect_data:/etc/kafka-connect/jars
+
+volumes:
+  kafka_connect_data: { }
