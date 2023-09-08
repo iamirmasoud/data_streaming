@@ -38,7 +38,7 @@ services:
       SCHEMA_REGISTRY_DEBUG: 'true'
 
   connect:
-    image: confluentinc/cp-kafka-connect:latest
+    image: confluentinc/cp-kafka-connect:5.5.12
     hostname: connect
     container_name: connect
     depends_on:
@@ -66,7 +66,17 @@ services:
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_ZOOKEEPER_CONNECT: 'zookeeper:2181'
     volumes:
-      - kafka_connect_data:/etc/kafka-connect/jars
+      - ./kafka_connect:/etc/kafka-connect/jars
 
-volumes:
-  kafka_connect_data: { }
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:4.1.1
+    hostname: kafka-rest
+    ports:
+      - "38082:38082"
+    depends_on:
+      - schemaregistry
+    environment:
+      KAFKA_REST_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_REST_SCHEMA_REGISTRY_URL: schemaregistry:8089
+      KAFKA_REST_HOST_NAME: kafka-rest
+      KAFKA_REST_LISTENERS: http://kafka-rest:38082
