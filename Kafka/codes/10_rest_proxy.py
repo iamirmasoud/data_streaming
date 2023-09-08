@@ -13,7 +13,7 @@ def get_topics():
     try:
         resp.raise_for_status()
     except:
-        print("Failed to get topics {json.dumps(resp.json(), indent=2)})")
+        print(f"Failed to get topics {json.dumps(resp.json(), indent=2)})")
         return []
 
     print("Fetched topics from Kafka:")
@@ -29,7 +29,7 @@ def get_topic(topic_name):
     try:
         resp.raise_for_status()
     except:
-        print("Failed to get topics {json.dumps(resp.json(), indent=2)})")
+        print(f"Failed to get topics {json.dumps(resp.json(), indent=2)})")
 
     print("Fetched topics from Kafka:")
     print(json.dumps(resp.json(), indent=2))
@@ -43,7 +43,7 @@ def get_brokers():
     try:
         resp.raise_for_status()
     except:
-        print("Failed to get brokers {json.dumps(resp.json(), indent=2)})")
+        print(f"Failed to get brokers {json.dumps(resp.json(), indent=2)})")
 
     print("Fetched brokers from Kafka:")
     print(json.dumps(resp.json(), indent=2))
@@ -60,7 +60,7 @@ def get_partitions(topic_name):
     try:
         resp.raise_for_status()
     except:
-        print("Failed to get partitions {json.dumps(resp.json(), indent=2)})")
+        print(f"Failed to get partitions {json.dumps(resp.json(), indent=2)})")
 
     print("Fetched partitions from Kafka:")
     print(json.dumps(resp.json(), indent=2))
