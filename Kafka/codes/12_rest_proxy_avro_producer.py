@@ -4,7 +4,6 @@ import time
 from dataclasses import asdict, dataclass, field
 
 import requests
-
 from faker import Faker
 
 faker = Faker()
