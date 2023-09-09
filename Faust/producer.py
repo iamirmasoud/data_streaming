@@ -81,3 +81,6 @@ def create_topic(client):
 
 if __name__ == "__main__":
     main()
+
+# Check the new topic
+# kafkacat -C -b localhost:29092 -o -5 -t com.sefidian.clickevents.popular
