@@ -11,7 +11,7 @@ class ClickEvent(faust.Record):
     number: int
 
 
-app = faust.App("exercise4", broker="kafka://localhost:29092")
+app = faust.App("filters", broker="kafka://localhost:29092")
 clickevents_topic = app.topic("com.sefidian.clickevents", value_type=ClickEvent)
 popular_uris_topic = app.topic(
     "com.sefidian.clickevents.popular", key_type=str, value_type=ClickEvent,
