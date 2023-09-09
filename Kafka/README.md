@@ -1,3 +1,6 @@
+```shell
+conda create -n streaming python=3.8 
+```
 # Kafka
 
 Apache **Kafka**® is a `distributed streaming platform` that:
