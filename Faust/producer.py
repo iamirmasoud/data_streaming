@@ -17,7 +17,8 @@ TOPIC_NAME = "com.sefidian.clickevents"
 class ClickEvent:
     email: str = field(default_factory=faker.email)
     timestamp: str = field(default_factory=faker.iso8601)
-    uri: str = field(default_factory=faker.uri)
+    # uri: str = field(default_factory=faker.uri)
+    uri: str = field(default_factory=lambda: random.choice(["A", "B", "C", "D", "E"]))
     number: int = field(default_factory=lambda: random.randint(0, 999))
 
     def serialize(self):

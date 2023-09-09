@@ -115,9 +115,7 @@ if __name__ == '__main__':
 ```
 #### execute
 ```shell
-python faust_stream.py
-
-faust -A faust_stream worker -l info
+python faust_stream.py worker
 ```
 
 ## KSQL
