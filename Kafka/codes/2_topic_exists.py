@@ -92,7 +92,7 @@ async def consume(topic_name):
 def check_connection():
     # Example using confluent_kafka
 
-    kafka_broker = {"bootstrap.servers": "localhost:9092"}
+    kafka_broker = {"bootstrap.servers": "localhost:29092"}
     admin_client = AdminClient(kafka_broker)
     topics = admin_client.list_topics().topics
     print(topics)
