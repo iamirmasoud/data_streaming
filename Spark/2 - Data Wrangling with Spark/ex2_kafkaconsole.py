@@ -19,8 +19,7 @@ kafkaRawStreamingDF = spark\
 
 # cast the key and value columns as strings and select them using a select expression function
 # this is necessary step for kafka Data Frame to be readable, into a single column value
-kafkaStreamingDF = kafkaRawStreamingDF.selectExpr('cast(key as string) key, 
-                                                  'cast(value as strig) value')
+kafkaStreamingDF = kafkaRawStreamingDF.selectExpr('cast(key as string) key,cast(value as string) value')
 
 # write the dataframe to the console and keep running indefinitely
 # this takes the stream and 'sinks' it to the console as it is updated one at a time.

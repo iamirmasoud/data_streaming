@@ -31,7 +31,7 @@ logData = spark.read.text(logFile).cache()
 # the letter 'a', and then count the rows that were found
 def countA(row):
     global numAs
-    numAs +=
+    numAs += 1
 
 key_schema = avro.loads('{"type": "string"}')
 # TO-DO: call the appropriate function to filter the data containing
