@@ -29,10 +29,11 @@ class KafkaConsumer:
         self.offset_earliest = offset_earliest
 
         self.broker_properties = {
-                "bootstrap.servers" : "PLAINTEXT://localhost:29092",
-                "group.id": topic_name_pattern, # TODO: DOUBLE CHECK
-                "default.topic.config":
-            {"auto.offset.reset": "earliest" if offset_earliest else "latest"}
+            "bootstrap.servers": "PLAINTEXT://localhost:29092",
+            "group.id": topic_name_pattern,  # TODO: DOUBLE CHECK
+            "default.topic.config": {
+                "auto.offset.reset": "earliest" if offset_earliest else "latest"
+            },
         }
 
         # Create the Consumer, using the appropriate type.
@@ -52,7 +53,7 @@ class KafkaConsumer:
         # the beginning or earliest
         logger.info("on_assign is incomplete - skipping")
         for partition in partitions:
-            partition.offset = OFFSET_BEGINNING # TODO: DOUBLE CHECK (OFFSET_BEGINNING)
+            partition.offset = OFFSET_BEGINNING  # TODO: DOUBLE CHECK (OFFSET_BEGINNING)
         logger.info(f"partitions assigned for {self.topic_name_pattern}")
         consumer.assign(partitions)
 
@@ -67,18 +68,17 @@ class KafkaConsumer:
     def _consume(self):
         """Polls for a message. Returns 1 if a message was received, 0 otherwise"""
         while True:
-            message = self.consumer.poll(timeout = self.consume_timeout) # Poll
+            message = self.consumer.poll(timeout=self.consume_timeout)  # Poll
             if message is None:
-                logger.DEBUG("No message received by consumer")
-                return 0 # no message is retrieved
+                logger.debug("No message received by consumer")
+                return 0  # no message is retrieved
             elif message.error() is not None:
-                logger.ERROR(f"Error from consumer {message.error()}")
+                logger.error(f"Error from consumer {message.error()}")
                 return 0
             else:
-
                 self.message_handler(message)
-                logger.INFO(f"Consumer Message Key :{message}")
-                return 1 # message is processed
+                logger.info(f"Consumer Message Key :{message}")
+                return 1  # message is processed
 
     def close(self):
         """Cleans up any open kafka consumers"""

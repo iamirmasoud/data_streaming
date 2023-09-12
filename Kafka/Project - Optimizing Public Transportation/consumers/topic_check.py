@@ -15,9 +15,9 @@ def contains_substring(to_test, substr):
 
 def topic_pattern_match(pattern):
     """
-        Takes a string `pattern`
-        Returns `True` if one or more topic names contains substring `pattern`.
-        Returns `False` if not.
+    Takes a string `pattern`
+    Returns `True` if one or more topic names contains substring `pattern`.
+    Returns `False` if not.
     """
     client = AdminClient({"bootstrap.servers": "PLAINTEXT://localhost:29092"})
     topic_metadata = client.list_topics()

@@ -36,7 +36,7 @@ def configure_connector():
                     "incrementing.column.name": "id",  # TODO
                     "table.whitelist": "reporting_separationrequestreport",  # TODO
                     "tasks.max": 1,
-                    "connection.url": "jdbc:postgresql://localhost:5432/bekhoon_db",
+                    "connection.url": "jdbc:postgresql://postgres:5432/bekhoon_db",
                     "connection.user": "postgres",
                     "connection.password": "postgres",
                     "key.converter": "org.apache.kafka.connect.json.JsonConverter",

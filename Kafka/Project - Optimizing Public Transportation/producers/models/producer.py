@@ -83,7 +83,7 @@ class Producer:
                 msg = f"Failed to create topic: {e}"
                 logger.fatal(msg)
                 print(msg)
-                raise
+                # raise
 
     def close(self):
         """Prepares the producer for exit by cleaning up the producer"""

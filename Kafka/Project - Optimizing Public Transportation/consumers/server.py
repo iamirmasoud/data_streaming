@@ -77,7 +77,9 @@ def run_server():
             is_avro=False,
         ),
         KafkaConsumer(
-            "arrival.station.(.(\w*|\.))*", lines.process_message, offset_earliest=True,
+            "arrival.station.(.(\w*|\.))*",
+            lines.process_message,
+            offset_earliest=True,
         ),
         KafkaConsumer(
             "TURNSTILE_SUMMARY",
