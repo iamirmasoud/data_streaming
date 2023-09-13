@@ -2,9 +2,9 @@
 Defines a time simulation responsible for executing any registered station
 """
 import datetime
+import logging.config
 import time
 from enum import IntEnum
-import logging.config
 from pathlib import Path
 
 import pandas as pd
@@ -14,7 +14,6 @@ logging.config.fileConfig(f"{Path(__file__).parents[0]}/logging.ini")
 
 from connector import configure_connector
 from models import Line, Weather
-
 
 logger = logging.getLogger(__name__)
 

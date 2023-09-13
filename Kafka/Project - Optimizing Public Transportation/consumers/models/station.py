@@ -1,7 +1,6 @@
 """Contains functionality related to Stations"""
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 

@@ -1,12 +1,11 @@
 """Methods pertaining to weather data"""
-from enum import IntEnum
 import json
 import logging
-from pathlib import Path
 import random
+from enum import IntEnum
+from pathlib import Path
 
 import requests
-
 from models.producer import Producer
 
 logger = logging.getLogger(__name__)

@@ -12,10 +12,8 @@ import logging
 from pathlib import Path
 
 from confluent_kafka import avro
-
 from models.producer import Producer
 from models.turnstile_hardware import TurnstileHardware
-
 
 logger = logging.getLogger(__name__)
 

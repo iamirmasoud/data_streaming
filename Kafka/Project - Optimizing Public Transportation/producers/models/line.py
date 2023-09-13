@@ -1,9 +1,8 @@
 """Defines functionality relating to train lines"""
-from enum import IntEnum
 import logging
+from enum import IntEnum
 
 from models import Station, Train
-
 
 logger = logging.getLogger(__name__)
 

@@ -1,10 +1,9 @@
 """Defines core consumer functionality"""
 import logging
 
-from confluent_kafka import Consumer, OFFSET_BEGINNING
+from confluent_kafka import OFFSET_BEGINNING, Consumer
 from confluent_kafka.avro import AvroConsumer
 from tornado import gen
-
 
 logger = logging.getLogger(__name__)
 

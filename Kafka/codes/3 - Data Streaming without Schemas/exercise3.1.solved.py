@@ -1,14 +1,13 @@
 # Please complete the TODO items in this code
 
 import asyncio
-from dataclasses import dataclass, field
 import json
 import random
+from dataclasses import dataclass, field
 
 from confluent_kafka import Consumer, Producer
 from confluent_kafka.admin import AdminClient, NewTopic
 from faker import Faker
-
 
 faker = Faker()
 

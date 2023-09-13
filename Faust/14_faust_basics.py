@@ -3,7 +3,7 @@ import faust
 # docker exec -it cli-tools kafka-console-producer --topic=test --bootstrap-server broker0:29092
 # TODO: Create the faust app with a name and broker
 #
-app = faust.App("hello-world-faust", broker="kafka://localhost:9092",)
+app = faust.App("hello-world-faust", broker="kafka://localhost:29092",)
 
 #
 # TODO: Connect Faust to a topic

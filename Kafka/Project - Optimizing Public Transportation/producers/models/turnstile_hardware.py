@@ -1,10 +1,9 @@
 import logging
 import math
-from pathlib import Path
 import random
+from pathlib import Path
 
 import pandas as pd
-
 
 logger = logging.getLogger(__name__)
 

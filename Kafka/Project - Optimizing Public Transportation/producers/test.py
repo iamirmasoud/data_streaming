@@ -1,7 +1,6 @@
 import json
 
 import requests
-
 from producers.models import Weather
 
 Weather(12).run(month=12)

@@ -5,9 +5,7 @@ import json
 import logging
 
 import requests
-
 import topic_check
-
 
 logger = logging.getLogger(__name__)
 

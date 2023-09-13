@@ -1,7 +1,7 @@
 # Please complete the TODO items in the code
 
-from dataclasses import asdict, dataclass
 import json
+from dataclasses import asdict, dataclass
 
 import faust
 

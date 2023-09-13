@@ -1,13 +1,13 @@
-from dataclasses import asdict, dataclass, field
 import json
-import time
 import random
+import time
+from dataclasses import asdict, dataclass, field
 
 import requests
-from confluent_kafka import avro, Consumer, Producer
-from confluent_kafka.avro import AvroConsumer, AvroProducer, CachedSchemaRegistryClient
+from confluent_kafka import Consumer, Producer, avro
+from confluent_kafka.avro import (AvroConsumer, AvroProducer,
+                                  CachedSchemaRegistryClient)
 from faker import Faker
-
 
 faker = Faker()
 REST_PROXY_URL = "http://localhost:8082"

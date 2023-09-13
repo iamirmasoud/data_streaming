@@ -1,5 +1,5 @@
-from .turnstile import Turnstile
+from .line import Line
 from .station import Station
 from .train import Train
-from .line import Line
+from .turnstile import Turnstile
 from .weather import Weather

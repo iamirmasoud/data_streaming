@@ -5,12 +5,12 @@
 # This requires some coordination between the worker and the master so work can be delegated.
 # Once they are both up and running, you will be able to submit your application to the master.
 
-from pyspark.sql import SparkSession
 from confluent_kafka import avro
+from pyspark.sql import SparkSession
 
 # TO-DO: create a variable with the absolute path to the text file
 # /home/workspace/Test.txt
-logFile = "/home/workspace/Test.txt" # should be some file on your system
+logFile = "/home/workspace/Test.txt"  # should be some file on your system
 
 # TO-DO: create a Spark session
 spark = SparkSession.builder.appName("HelloSpark").getOrCreate()
@@ -32,6 +32,7 @@ logData = spark.read.text(logFile).cache()
 def countA(row):
     global numAs
     numAs += 1
+
 
 key_schema = avro.loads('{"type": "string"}')
 # TO-DO: call the appropriate function to filter the data containing

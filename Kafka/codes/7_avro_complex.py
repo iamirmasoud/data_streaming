@@ -6,7 +6,6 @@ from io import BytesIO
 
 from confluent_kafka import Producer
 from faker import Faker
-
 from fastavro import parse_schema, writer
 
 faker = Faker()
