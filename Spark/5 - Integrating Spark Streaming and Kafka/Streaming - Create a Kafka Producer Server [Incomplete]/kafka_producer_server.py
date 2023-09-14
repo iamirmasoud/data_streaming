@@ -1,6 +1,7 @@
-from kafka import KafkaProducer
 import json
 import time
+
+from kafka import KafkaProducer
 
 
 class ProducerServer(KafkaProducer):
